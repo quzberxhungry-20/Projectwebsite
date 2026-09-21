@@ -1,0 +1,671 @@
+:root {
+  --primary: #77b842;
+  --bg: #f9f9f9; /* Diubah menjadi abu-abu sangat muda/putih tulang agar card putih lebih menonjol */
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  text-decoration: none;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: var(--bg);
+  color: #333; /* Ubah warna teks default menjadi abu-abu gelap/hitam */
+}
+
+/* =========================================
+   NAVBAR (GLOBAL)
+   ========================================= */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 15px 50px;
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 9999;
+}
+
+.navbar .navbar-logo {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+  font-style: italic;
+}
+
+.navbar .navbar-logo span {
+  color: var(--primary);
+}
+
+.navbar .navbar-nav a {
+  color: #fff;
+  display: inline-block;
+  font-size: 1.4rem;
+  margin: 0 1rem;
+  transition: 0.2s;
+}
+
+.navbar .navbar-nav a:hover {
+  color: var(--primary);
+}
+
+.navbar .navbar-nav a::after {
+  content: "";
+  display: block;
+  padding-bottom: 0.5rem;
+  border-bottom: 0.1rem solid var(--primary);
+  transform: scaleX(0);
+  transition: 0.2s linear;
+}
+
+.navbar .navbar-nav a:hover::after {
+  transform: scaleX(0.2);
+}
+
+.navbar .navbar-extra a {
+  color: #ffffff;
+  margin: 0 0.5rem;
+}
+
+.navbar .navbar-extra a:hover {
+  color: var(--primary);
+}
+
+#hamburger-menu {
+  display: inline-block;
+  cursor: pointer;
+}
+
+/* =========================================
+   SEARCH FORM
+   ========================================= */
+.navbar .search-form {
+  position: absolute;
+  top: 100%;
+  right: 7%;
+  background-color: #fff;
+  width: 40rem;
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: 0.3s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+
+.navbar .search-form.active {
+  transform: scaleY(1);
+}
+
+.navbar .search-form input {
+  height: 100%;
+  width: 100%;
+  font-size: 1.6rem;
+  color: #000;
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+.navbar .search-form label {
+  cursor: pointer;
+  font-size: 2rem;
+  margin-right: 1.5rem;
+  color: #000;
+}
+
+/* =========================================
+   SHOPPING CART
+   ========================================= */
+.shopping-cart {
+  position: absolute;
+  top: 100%;
+  right: -100%; /* Sembunyikan ke kanan */
+  height: 100vh;
+  width: 35rem; /* Lebar keranjang di Laptop */
+  padding: 0 1.5rem;
+  background-color: #fff;
+  color: #000;
+  transition: 0.4s;
+  box-shadow: -5px 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.shopping-cart.active {
+  right: 0;
+}
+
+.shopping-cart .cart-item {
+  margin: 2rem 0;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px dashed #666;
+}
+
+.shopping-cart .cart-item img {
+  height: 6rem;
+  width: 6rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.shopping-cart .cart-item .item-detail h3 {
+  font-size: 1.6rem;
+  padding-bottom: 0.5rem;
+  color: var(--primary);
+}
+
+.shopping-cart .cart-item .item-detail .item-price {
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.shopping-cart .cart-item .remove-item {
+  font-size: 2rem;
+  cursor: pointer;
+  color: #e74c3c;
+  margin-left: auto;
+}
+
+.shopping-cart .cart-item .remove-item:hover {
+  color: #c0392b;
+}
+
+.checkout-btn {
+  display: block;
+  text-align: center;
+  background-color: var(--primary);
+  color: #fff;
+  padding: 1rem;
+  font-size: 1.8rem;
+  font-weight: 600;
+  border-radius: 5px;
+  margin-top: 2rem;
+  transition: 0.3s;
+}
+
+.checkout-btn:hover {
+  background-color: #5a8f32;
+  color: #fff;
+}
+
+/* =========================================
+   HERO SECTION
+   ========================================= */
+.hero {
+  background: url("../images/es-campur.jpeg") no-repeat center center;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 20px;
+  color: white;
+  position: relative;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 600px;
+}
+
+.hero h1 {
+  font-size: 42px;
+  margin-bottom: 15px;
+}
+
+.hero p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 14px 30px;
+  background: #77b842;
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  background: #5a8f32;
+  color: #fff;
+  transform: scale(1.08);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* =========================================
+   ABOUT, MENU & CONTACT (GLOBAL LAYOUT)
+   ========================================= */
+.about,
+.menu,
+.contact {
+  padding: 8rem 7% 1.4rem;
+}
+
+/* Memusatkan hanya bagian menu (Sesuai Permintaan) */
+.menu {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.about h2,
+.menu h2,
+.contact h2 {
+  text-align: center;
+  font-size: 2.6rem;
+  margin-bottom: 3rem;
+}
+
+.about h2 span,
+.menu h2 span,
+.contact h2 span {
+  color: var(--primary);
+}
+
+/* ABOUT SECTION (Original) */
+.about {
+  position: relative; 
+  overflow: hidden; 
+}
+.about h2, .about .row {
+  position: relative;
+  z-index: 1;
+}
+.about .decor {
+  position: absolute;
+  color: #fff; 
+  opacity: 0.15; 
+  z-index: 0; 
+  animation: float 4s ease-in-out infinite; 
+}
+.about .decor svg { width: 80px; height: 80px; }
+.about .decor-1 { top: 15%; left: 5%; animation-delay: 0s; }
+.about .decor-2 { top: 25%; right: 7%; color: var(--primary); animation-delay: 1s; }
+.about .decor-3 { bottom: 10%; left: 8%; animation-delay: 2s; }
+.about .decor-4 { bottom: 20%; right: 12%; animation-delay: 3s; }
+
+@keyframes float {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(15deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+.about .row {
+  display: flex;
+  align-items: center;
+  gap: 3rem; 
+  background-color: rgba(0, 0, 0, 0.15); 
+  padding: 3rem;
+  border-radius: 20px; 
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); 
+}
+.about .about-img {
+  background: url("../images/tentang\ kami2.jpg") no-repeat center center;
+  background-size: cover;
+  flex: 1 1 45rem;
+  height: 400px;
+  border-radius: 15px; 
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease; 
+}
+.about .about-img:hover { transform: scale(1.03); }
+.about .row .content { flex: 1 1 35rem; padding: 0; }
+.about .row .content h3 { 
+  font-size: 2rem; 
+  margin-bottom: 1rem; 
+  color: var(--primary); 
+}
+
+.about .row .content p { 
+  margin-bottom: 1.5rem; 
+  font-size: 1.2rem; 
+  font-weight: 400; 
+  line-height: 1.6; 
+  color: #444444; 
+}
+
+.about-features { 
+  list-style: none; 
+  margin-bottom: 2.5rem; 
+}
+
+.about-features li { 
+  font-size: 1.2rem; 
+  margin-bottom: 1rem; 
+  display: flex; 
+  align-items: center; 
+  gap: 1rem; 
+  font-weight: 400; 
+  color: #333333; 
+}
+
+.about-features li i { 
+  color: var(--primary); 
+}
+
+/* MENU SECTION (Pusat & Profesional) */
+/* =========================================
+   MENU SECTION (Style Kartu Modern / Gambar 2)
+   ========================================= */
+.menu p,
+.contact p {
+  text-align: center;
+  max-width: 30rem;
+  margin: auto;
+  font-weight: 300; /* Sedikit ditebalkan dari 100 agar terbaca di background putih */
+  line-height: 1.6;
+  color: #666; /* Warna paragraf abu-abu */
+}
+
+/* Mengatur Grid Card */
+.menu .row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsif otomatis */
+  gap: 2rem; /* Jarak antar kartu */
+  margin-top: 4rem;
+  padding: 0 1rem;
+}
+
+/* Desain Kartu (Card) */
+.menu .row .menu-card {
+  background-color: #ffffff; /* Background kartu putih bersih */
+  border-radius: 15px; /* Sudut melengkung */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Shadow sangat halus */
+  padding: 1.5rem;
+  text-align: left; /* Teks rata kiri seperti Gambar 2 */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #f0f0f0; /* Garis tepi tipis */
+}
+
+.menu .row .menu-card:hover {
+  transform: translateY(-5px); /* Efek melayang saat di-hover */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Gambar Produk dalam Kartu */
+.menu .row .menu-card img {
+  width: 100%; /* Gambar memenuhi lebar kartu */
+  height: 200px; /* Tinggi gambar dibuat seragam */
+  object-fit: cover; /* Gambar tidak gepeng, akan dipotong rapi */
+  border-radius: 10px; /* Sudut gambar sedikit melengkung */
+  margin-bottom: 1.5rem;
+  display: block;
+}
+
+/* Judul Menu */
+.menu .row .menu-card .menu-card-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #333; /* Warna judul hitam/abu gelap */
+  margin-bottom: 0.5rem;
+  margin-top: 0;
+}
+
+/* Harga Menu */
+.menu .row .menu-card .menu-card-price {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #333; /* Harga warna hitam pekat seperti Gambar 2 */
+  margin-bottom: 1.5rem;
+}
+
+/* Tombol Tambah ke Keranjang di dalam Kartu */
+.menu .row .menu-card .add-to-cart-btn {
+  display: inline-block;
+  width: 100%; /* Tombol memenuhi lebar kartu */
+  padding: 1rem 0;
+  background-color: #e62e2d; /* Warna merah seperti KFC (atau ganti dengan var(--primary) jika ingin hijau) */
+  color: #ffffff;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-align: center;
+  border-radius: 30px; /* Sudut tombol sangat bulat */
+  transition: background-color 0.3s ease;
+  margin-top: auto; /* Mendorong tombol ke bawah jika teks di atasnya pendek */
+}
+
+.menu .row .menu-card .add-to-cart-btn:hover {
+  background-color: #c92222; /* Merah lebih gelap saat hover */
+}
+
+/* CONTACT SECTION (Original) */
+.contact .row {
+  display: flex;
+  margin-top: 2rem;
+  background-color: #222;
+  flex-wrap: wrap;
+}
+
+.contact .row .map {
+  flex: 1 1 45rem;
+  width: 100%;
+  object-fit: cover;
+}
+
+.contact .row form {
+  flex: 1 1 45rem;
+  padding: 5rem 2rem;
+  text-align: center;
+}
+
+.contact .row form .input-group {
+  display: flex;
+  align-items: center;
+  margin-top: 2rem; 
+  background-color: #000; 
+  border: 1px solid #eee;
+  padding-left: 2rem;
+}
+
+.contact .row form .input-group input {
+  width: 100%;
+  padding: 2rem;
+  font-size: 1.7rem;
+  background: none;
+  color: #fff;
+}
+
+.contact .row form .btn {
+  margin-top: 3rem;
+  display: inline-block;
+  padding: 1rem 3rem;
+  font-size: 1.7rem;
+  color: #fff;
+  background-color: var(--primary);
+  cursor: pointer;
+}
+
+/* FOOTER */
+footer {
+  background-color: var(--primary);
+  text-align: center;
+  padding: 1rem 0 3rem;
+  margin-top: 3rem;
+}
+footer .social { padding: 1rem 0; }
+footer .social a { color: #fff; margin: 1rem; }
+footer .social a:hover, footer .links a:hover { color: var(--bg); }
+footer .links { margin-bottom: 1.4rem; }
+footer .links a { color: #fff; padding: 0.7rem 1rem; }
+footer .credit { font-size: 0.8rem; }
+footer .credit a { color: #000; font-weight: 700; }
+
+/* =========================================
+   MEDIA QUERIES (ANDROID, TABLET, LAPTOP)
+   ========================================= */
+
+/* LAPTOP (1366px ke bawah) */
+@media (max-width: 1366px) {
+  html {
+    font-size: 75%;
+  }
+
+  .hero::after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 0%;
+    bottom: 0;
+    background: linear-gradient(
+      0deg,
+      rgba(1, 1, 3, 1) 8%,
+      rgba(255, 255, 255, 0) 55%
+    );
+  }
+
+  .hero .content {
+    padding: 1.4rem 7%;
+    max-width: 60rem;
+    margin: 0 auto; 
+    text-align: center;
+  }
+
+  .hero .content h1 { font-size: 5em; color: #fff; text-shadow: 1px 1px 3px rgba(1, 1, 3, 0.5); line-height: 1.2; }
+  .hero .content h1 span { color: var(--primary); }
+  .hero .content p { font-size: 1.6rem; margin-top: 1rem; line-height: 1.4; font-weight: 100; text-shadow: 1px 1px 3px rgba(1, 1, 3, 0.5); mix-blend-mode: difference; }
+  
+  .hero .content .cta {
+    margin-top: 1rem;
+    display: inline-block;
+    padding: 1rem 3rem; 
+    font-size: 1.4rem;
+    color: #fff;
+    background-color: var(--primary);
+    border-radius: 0.5rem;
+    box-shadow: 1px 1px 3px rgba(1, 1, 3, 0.5);
+  }
+}
+
+/* TABLET & ANDROID MOBILE (768px ke bawah) */
+@media (max-width: 768px) {
+  /* Paksa 2 kolom agar persis seperti desktop */
+  .menu .row {
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 1.5rem;
+    padding: 0;
+  }
+  
+  .menu .row .menu-card img {
+    height: 180px; /* Kurangi tinggi gambar agar tidak terlalu memakan ruang ke bawah */
+  }
+  
+  .menu .row .menu-card .menu-card-title { font-size: 1.3rem; }
+  .menu .row .menu-card .menu-card-price { font-size: 1.4rem; }
+
+  /* Navbar Sidebar saat Hamburger diklik */
+  .navbar .navbar-nav {
+    position: absolute;
+    top: 100%;
+    right: -100%;
+    background-color: #000;
+    width: 30rem;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding-top: 2rem;
+    transition: 0.3s;
+  }
+
+  .navbar .navbar-nav a {
+    color: #fff; 
+    margin: 1rem;
+    font-size: 1.6rem;
+    display: block;
+  }
+
+  .navbar .navbar-nav.active { right: 0; }
+
+  /* Penyesuaian Search & Cart untuk Layar Tablet/HP */
+  .navbar .search-form {
+    width: 90%; 
+    right: 2rem; 
+  }
+
+  .shopping-cart {
+    width: 100%; 
+  }
+
+  /* Susunan About di HP menjadi kolom ke bawah */
+  .about .row {
+    flex-direction: column; 
+    gap: 2rem;
+    padding: 2rem; 
+  }
+  
+  .about .about-img {
+    height: 300px; 
+    width: 100%;
+  }
+} 
+
+/* ANDROID KECIL (450px ke bawah) */
+@media (max-width: 450px) {
+  html {
+    font-size: 55%;
+  }
+
+  /* Paksa 2 kolom di HP agar sama persis seperti desktop */
+  .menu .row {
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 1rem; /* Jarak antar kartu sedikit dirapatkan agar muat */
+    padding: 0 0.5rem;
+  }
+  
+  .menu .row .menu-card {
+    padding: 1rem; /* Padding dalam kartu dikurangi */
+  }
+  
+  .menu .row .menu-card img {
+    height: 120px; /* Gambar dikecilkan agar proporsional untuk 2 kolom di layar HP */
+    margin-bottom: 1rem;
+  }
+
+  .menu .row .menu-card .menu-card-title {
+    font-size: 1.1rem; /* Teks dikecilkan agar tidak tumpang tindih */
+  }
+
+  .menu .row .menu-card .menu-card-price {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .menu .row .menu-card .add-to-cart-btn {
+    font-size: 1rem; 
+    padding: 0.8rem 0; /* Tombol disesuaikan dengan ukuran kartu yang baru */
+  }
+}
